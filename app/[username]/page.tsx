@@ -1,7 +1,13 @@
 import UserPageClient from '@/components/UserPageClient';
 import clientPromise from '@/lib/mongodb';
 
-export default async function UserPage({ params }) {
+interface Params {
+  params: {
+    username: string;
+  };
+}
+
+export default async function UserPage({ params }: Params) {
   const client = await clientPromise;
   const db = client.db('linkify');
   const collection = db.collection('links');
